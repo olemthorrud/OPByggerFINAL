@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 #include "uart.h"
-
+#include "sram.h"
 
 
 
@@ -37,8 +37,8 @@ int main(void)
 	// Send a welcome message
 	printf("UART Test Program!\n");
 	printf("Type any character and it will be echoed back.\n");
-	DDRB = 0x0;
-	DDRA = 0xFF;
+	DDRB = 0x0; //set PORTB to input (all 0's) 
+	DDRA = 0xFF; //set PORTA to output (all 1's)
 
 
 	PORTB |= (1 << PB0);

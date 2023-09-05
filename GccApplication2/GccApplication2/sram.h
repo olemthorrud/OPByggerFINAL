@@ -5,12 +5,12 @@
  *  Author: pmherdle
  */ 
 
+ #pragma once
 
-#ifndef INCFILE1_H_
-#define INCFILE1_H_
+ 
+ #include <avr/io.h>
+ #include <util/delay.h>
+ #include <stdio.h>
 
 
-
-
-
-#endif /* INCFILE1_H_ */
+void SRAM_test(void);
