@@ -18,4 +18,13 @@ void USART_Transmit(unsigned char data);
 unsigned char USART_Receive(void);
 void uart_link_printf();
 
+void SRAM_test(void);
+
+void SRAM_test2(void);
+
+void decoding_test(void); 
+
+void SRAM_init(void);
+
+
 

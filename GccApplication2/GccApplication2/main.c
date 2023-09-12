@@ -37,38 +37,56 @@ int main(void)
 	// Send a welcome message
 	printf("UART Test Program!\n");
 	printf("Type any character and it will be echoed back.\n");
-	DDRB = 0x0; //set PORTB to input (all 0's) 
-	DDRA = 0xFF; //set PORTA to output (all 1's)
+//	DDRB = 0x0; //set PORTB to input (all 0's) 
+// 	DDRA = 0xFF; //set PORTA to output (all 1's)
+// 	DDRE = 0xFF; //set PORTA to output (all 1's)
+// 	DDRC = 0x0F; 
+// 
+// 	DDRB = 0xFF; 
 
+	
+	
+	
 
-	PORTB |= (1 << PB0);
-
-	while (1)
-	{
-		//Wait for a character from UART
-		receivedData = USART_Receive();
-		if(receivedData == 'a'){
-			PORTA |= (1 << PA3);
-		}
-		else if (receivedData == 'c'){
-			PORTA |= (1 << PA4);
-		}
-		else if (receivedData == 'b'){
-			PORTA &= (0 << PA3);
-		}
-		else if (receivedData == 'd'){
-			PORTA &= (0 << PA4);
-		}
-
-
+	
+	SRAM_init(); 
 		
-		// Echo the received character back to the terminal
-		printf("%c", receivedData);
-
-	}	
+	SRAM_test();
+	//ram_test();
+	//adc_test();
+	//oled_test(); 
+		
+	//for echo test UART
+// 	while (1)
+// 	{
+// 
+// 		//Wait for a character from UART
+// 		receivedData = USART_Receive();
+// 		
+// 
+// 		
+// 		// Echo the received character back to the terminal
+// 		printf("The received data is: %c", receivedData);
+// 
+// 	}	
 
 	return 0; // This line will never be reached in an embedded program
 }
 
 
 
+//sette xmm2 til 1
+//xmm1 og xmm0 til 0
+
+// if(receivedData == 'a'){
+// 	PORTA |= (1 << PA3);
+// }
+// else if (receivedData == 'c'){
+// 	PORTA |= (1 << PA4);
+// }
+// else if (receivedData == 'b'){
+// 	PORTA &= (0 << PA3);
+// }
+// else if (receivedData == 'd'){
+// 	PORTA &= (0 << PA4);
+// }
