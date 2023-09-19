@@ -17,76 +17,33 @@
 
 #include "uart.h"
 #include "sram.h"
-
-
-
-
-
+#include "adc.h"
+#include "oled.h"
 
 
 int main(void)
 {
-	unsigned char receivedData;
-
 	// Initialize UART
 	USART_Init(UBRR);
-
-	// Redirect printf and scanf to UART
 	uart_link_printf();
 
-	// Send a welcome message
-	printf("UART Test Program!\n");
-	printf("Type any character and it will be echoed back.\n");
-//	DDRB = 0x0; //set PORTB to input (all 0's) 
-// 	DDRA = 0xFF; //set PORTA to output (all 1's)
-// 	DDRE = 0xFF; //set PORTA to output (all 1's)
-// 	DDRC = 0x0F; 
-// 
-// 	DDRB = 0xFF; 
-
-	
-	
-	
-
-	
+	//Initialize SRAM
 	SRAM_init(); 
-		
-	SRAM_test();
-	//ram_test();
-	//adc_test();
-	//oled_test(); 
-		
-	//for echo test UART
-// 	while (1)
-// 	{
-// 
-// 		//Wait for a character from UART
-// 		receivedData = USART_Receive();
-// 		
-// 
-// 		
-// 		// Echo the received character back to the terminal
-// 		printf("The received data is: %c", receivedData);
-// 
-// 	}	
-
-	return 0; // This line will never be reached in an embedded program
+	
+	//Initialize ADC clock
+	adc_config_clock();
+ 	 
+	  
+	  
+	  
+// 	int ADC_driver_data[4]; 
+// 	multifunction_board_test(ADC_driver_data); 
+	
+	oled_init();
+	oled_fill(); 
+	
+	return 0; 
 }
 
 
 
-//sette xmm2 til 1
-//xmm1 og xmm0 til 0
-
-// if(receivedData == 'a'){
-// 	PORTA |= (1 << PA3);
-// }
-// else if (receivedData == 'c'){
-// 	PORTA |= (1 << PA4);
-// }
-// else if (receivedData == 'b'){
-// 	PORTA &= (0 << PA3);
-// }
-// else if (receivedData == 'd'){
-// 	PORTA &= (0 << PA4);
-// }

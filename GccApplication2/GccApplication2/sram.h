@@ -15,4 +15,8 @@
   
 
 
-//void SRAM_test(void);
+void SRAM_test(void);
+
+void SRAM_init(void);
+
+void SRAM_test2(void);
