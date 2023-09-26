@@ -12,7 +12,7 @@
 void SRAM_test(void)
 {
 	
-	/*
+	
 	volatile char *ext_ram = (char *) 0x1800; // Start address for the SRAM
 	uint16_t ext_ram_size = 0x800;
 	uint16_t write_errors = 0;
@@ -44,5 +44,43 @@ void SRAM_test(void)
 		}
 	}
 	printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", write_errors, retrieval_errors);
-	*/
+	
+}
+
+
+void SRAM_init(void){
+	MCUCR |= (1 << SRE);
+	SFIOR |= (1 << XMM2);
+}
+
+
+void SRAM_test2(void){
+	
+	
+	DDRA = 0xFF; //set PORTA to output (all 1's)
+	PORTB &= (0 << PB0); // Enabler input på sram
+	
+	volatile char *ext_ram = (char *) 0x1800;
+	uint8_t some_value = 503;
+	uint8_t some_value2 = 500;
+	uint8_t some_value3 = 400;
+	
+	ext_ram[0] = some_value;
+	ext_ram[16] = some_value2;
+	ext_ram[34] = some_value3;
+	
+	
+	DDRA = 0x0; //set PORTA to input (all 0's)
+	PORTB |= (1 << PB0);
+	
+	uint8_t retreived_value = ext_ram[1];
+	uint8_t retreived_value1 = ext_ram[16];
+	uint8_t retreived_value2 = ext_ram[34];
+
+	printf("Retrieved Value = %02X, Some Value = %02X . ", retreived_value, some_value);
+	printf("Retrieved Value = %02X, Some Value = %02X . ", retreived_value1, some_value2);
+	printf("Retrieved Value = %02X, Some Value = %02X . ", retreived_value2, some_value3);
+
+	PORTB &= (0 << PB0);
+
 }
