@@ -72,7 +72,7 @@ void adc_driver(int* res_list){
 	
 	int horiz_data, vert_data, slider1, slider2;
 	
-	volatile uint8_t A = adc_read(0); // Her trekker vi dra 13. Når målt verrdi da er under 13 går den rund og teller ned fra 255
+	volatile uint8_t A = adc_read(0); 
 	horiz_data = convert_horiz_JS(A);
 	res_list[0] = horiz_data;
 	

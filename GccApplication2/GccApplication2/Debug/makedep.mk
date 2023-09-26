@@ -4,6 +4,8 @@
 
 adc.c
 
+fonts.c
+
 oled.c
 
 sram.c

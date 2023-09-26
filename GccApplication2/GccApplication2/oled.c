@@ -41,6 +41,10 @@ static void oled_write(uint8_t cmd){
 	adress[0] = cmd;
 }
 
+static void oled_write_data(uint8_t data){
+	volatile char* address = (char*) 0x1200;
+	address[0] = data;
+}
 
 
 void oled_goto_line(int line){
@@ -56,20 +60,99 @@ void oled_goto_column(int column){
 }
 
 void oled_fill(){
+	oled_clear();
 	for (int i = 0 ; i < 8 ; i++)
 	{
 		oled_goto_line(i);
 		oled_goto_column(0);
 		for (int j = 0 ; j < 128 ; j++)
 		{
-			oled_write((0xff));
+			oled_goto_column(j); 
+			oled_write_data((0xff));
 		}
 	}
 }
 	
-/*
-void oled_clear_line(int line){}
-void oled_pos(int row, int column){}
-void oled_print(char* c){}
-void oled_home(){}
-	*/
+void oled_clear() {
+	for (int page = 0; page <= 7; page++) {
+		oled_pos(page, 0);
+		for (int col = 0; col <= 127; col++) {
+			oled_write_data(0);
+		}
+	}
+}
+
+void oled_print(char c) {
+	//oled_goto_line(0);
+	//oled_goto_column(0);
+	if (' ' <= c && c <= '~') {
+		//printf("I get here"); 
+		for (int i = 0; i < FONT_LENGTH; i++) {
+			uint8_t character = pgm_read_byte(&(font8[c - ASCII_OFFSET][i]));
+			oled_write_data(character);
+		}
+	}
+}
+
+void oled_pos(int line, int col) {
+	oled_goto_line(line);
+	oled_goto_column(col);
+}
+
+
+void print(const char* str) {
+	int i = 0; 
+	while (str[i] != '\0') {
+		oled_print(str[i]);
+		printf("%c", str[i]); 
+		++i;
+	}
+}
+
+
+
+void oled_arrow(int* arrow_pos , int k){
+
+	
+	oled_pos(*arrow_pos,1);
+//	oled_write_data(' '); 
+	oled_print(' ');
+	
+	if(k == 1 ){
+		*arrow_pos += 1;
+		
+		if (*arrow_pos == 8){
+			*arrow_pos = 0;
+		}
+	}
+	else{
+		if(*arrow_pos == 0){
+			*arrow_pos = 7;
+		}
+		else{
+			*arrow_pos -= 1;
+		}
+
+	}
+
+	
+		oled_pos(*arrow_pos, 1);
+		oled_print('>');
+
+	}
+	
+	
+void menu_init(int* arrow_pos){
+	oled_pos(0,8);
+	print("Play Game");
+	oled_pos(1,8);
+	print("Choose settings");
+	oled_pos(2,8);
+	print("Choose mode");
+	
+	oled_pos(*arrow_pos,0);
+	oled_print('>');
+	
+	}
+	
+	
