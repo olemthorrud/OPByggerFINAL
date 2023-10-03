@@ -19,14 +19,16 @@
 #include "sram.h"
 #include "adc.h"
 #include "oled.h"
+#include "spi_driver.h"
+#include "mcp_driver.h"
 
-
+/*
 int main(void)
 {
 	
-	int js_pos[4]; 
+	volatile int js_pos[4]; 
 	adc_driver(js_pos); 
-	int arrow_pos = 0;
+	volatile int arrow_pos = 0;
 	int* arrow_pos_ptr = &arrow_pos; 
 	// Initialize UART
 	USART_Init(UBRR);
@@ -58,13 +60,14 @@ int main(void)
 	 
 	while (1)
 	{
+
 		adc_driver(js_pos);
 		_delay_ms(100);
-		if (js_pos[1] < 100){
+		if (js_pos[1] < 80){
 			oled_arrow(arrow_pos_ptr, 1);	
-		}else if (js_pos[1] > 180) {
+		}else if (js_pos[1] > 200) {
 			oled_arrow(arrow_pos_ptr, 0);
-	}
+		}
 }
 	
 
@@ -80,3 +83,70 @@ int main(void)
 
 
 
+
+
+
+/*
+int main(void)
+{
+	
+
+	// Initialize UART
+	USART_Init(UBRR);
+	uart_link_printf();
+	//Initialize SRAM
+	SRAM_init();
+	//Initialize ADC clock
+	adc_config_clock();
+	
+	
+	spi_init();
+	
+
+	
+	
+
+	//oled_clear();
+	// 	char character =  'c';
+	// 	oled_print(character);
+	//	print("hei");
+
+	//	oled_arrow(arrow_pos_ptr , 1);
+
+	return 0;
+}
+
+
+*/
+
+
+int main(void)
+{
+		volatile int js_pos[4];
+		adc_driver(js_pos);
+		volatile int arrow_pos = 0;
+		int* arrow_pos_ptr = &arrow_pos;
+		USART_Init(UBRR);
+		uart_link_printf();
+		SRAM_init();
+		adc_config_clock();
+		oled_init();
+		spi_init();
+
+		
+		uint8_t send = 0x01;
+		uint8_t address = 0x0E;
+		uint8_t lest;
+
+
+			while(1){
+				_delay_ms(100);
+				mcp_write(address, send);
+				lest = mcp_read(address);
+				//printf("%u " , send);
+				printf("%u " , lest);
+			}
+			
+	
+	return 0;
+}

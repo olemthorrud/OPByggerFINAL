@@ -70,7 +70,7 @@ int convert_horiz_JS(uint8_t A){
 
 void adc_driver(int* res_list){
 	
-	int horiz_data, vert_data, slider1, slider2;
+	volatile int horiz_data, vert_data, slider1, slider2;
 	
 	volatile uint8_t A = adc_read(0); 
 	horiz_data = convert_horiz_JS(A);
