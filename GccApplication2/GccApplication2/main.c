@@ -131,16 +131,14 @@ int main(void)
 		SRAM_init();
 		adc_config_clock();
 		oled_init();
-		spi_init();
+		mcp_init();
 
 		
-		uint8_t send = 0x01;
-		uint8_t address = 0x0E;
+		uint8_t send = 0xA1;
+		uint8_t address = 31;
 		uint8_t lest;
 
-
 			while(1){
-				_delay_ms(100);
 				mcp_write(address, send);
 				lest = mcp_read(address);
 				//printf("%u " , send);

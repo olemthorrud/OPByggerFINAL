@@ -6,7 +6,7 @@
  */ 
 
 
-
+#include <stdio.h>
 
 void spi_init();
 void SPI_write(char data);

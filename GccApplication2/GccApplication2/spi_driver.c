@@ -14,20 +14,20 @@
 
 void SPI_write(char data) 
 {
-	PORTB &= (0 << PB4);
-	/* Start transmission */ 
+
 	SPDR = data;
-	/* Wait for transmission complete */
+
 	while(!(SPSR & (1<<SPIF))); 
 	
-	PORTB |= (1 << PB4);
 }
 
 
 uint8_t SPI_read(void)
 {
+	uint8_t data;
 	SPI_write(0); //We are never interested in what the slave says
-	return SPDR;
+	data = SPDR;
+	return data;
 }
 
 
