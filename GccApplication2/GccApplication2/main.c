@@ -21,6 +21,7 @@
 #include "oled.h"
 #include "spi_driver.h"
 #include "mcp_driver.h"
+#include "can.h"
 
 /*
 int main(void)
@@ -131,20 +132,23 @@ int main(void)
 		SRAM_init();
 		adc_config_clock();
 		oled_init();
-		mcp_init();
+		//mcp_init();
+		can_init();
 
 		
-		uint8_t send = 0xA1;
-		uint8_t address = 31;
-		uint8_t lest;
+// 		uint8_t send = 0x01;
+// 		uint8_t address = 31;
+// 		uint8_t lest;
+// 
+// 			while(1){
+// 				mcp_write(address, send);
+// 				lest = mcp_read(address);
+// 				//printf("%u " , send);
+// 				printf("%u " , lest);
+// 			}
 
-			while(1){
-				mcp_write(address, send);
-				lest = mcp_read(address);
-				//printf("%u " , send);
-				printf("%u " , lest);
-			}
-			
+
+	can_test(1, 1, 4); 
 	
 	return 0;
 }

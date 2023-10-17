@@ -4,6 +4,8 @@
 
 adc.c
 
+can.c
+
 fonts.c
 
 mcp_driver.c
