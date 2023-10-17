@@ -58,17 +58,14 @@ void bit_modify(uint8_t address, uint8_t mask, uint8_t data){
 
 void set_loopback(){
 	 bit_modify(MCP_CANCTRL, MODE_MASK, MODE_LOOPBACK);
+	 
 
 	 // verify new mode
 	 uint8_t new_mode = mcp_read(MCP_CANSTAT);
 	 if ((new_mode & MODE_MASK) != MODE_LOOPBACK) {
-		 printf("ERROR: failed to set mode. \r \n");
-		 return 1;
-	 }
-
-	 return 0;
+		 printf("ERROR: failed to set mode to loopback. \r \n");
+	}
 }
-
 
 void mcp_init() {
 	spi_init();
@@ -83,11 +80,11 @@ void mcp_init() {
 	
 	//set_loopback(); 
 	// set CAN bitrate
-// 	uint8_t BRP = F_CPU / (2 * 16 * 250000);//review later - why is it like this? 
+ 	//uint8_t BRP = F_CPU / (2 * 16 * 250000);//review later - why is it like this? 
 // 
-// 	mcp_write(MCP_CNF1, SJW4 | (BRP - 1));
-// 	mcp_write(MCP_CNF2, BTLMODE | SAMPLE_3X | ((PS1 - 1) << 3) | (PROPAG - 1));
-// 	mcp_write(MCP_CNF3, WAKFIL_DISABLE | (PS2 - 1));
+ 	//mcp_write(MCP_CNF1, SJW4 | (BRP - 1));
+ 	//mcp_write(MCP_CNF2, BTLMODE | SAMPLE_3X | ((PS1 - 1) << 3) | (PROPAG - 1));
+ 	//mcp_write(MCP_CNF3, WAKFIL_DISABLE | (PS2 - 1));
 }
 
 void mcp_reset() {

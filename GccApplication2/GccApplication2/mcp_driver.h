@@ -171,4 +171,22 @@ void set_loopback();
 #define MCP_WAKIF		0x40
 #define MCP_MERRF		0x80
 
+//Our own definitions
+#define MCP_TXB0_SIDH 0x31
+#define MCP_TXB0_SIDL 0x32
+#define MCP_TXB0_DLC 0x35
+#define MCP_TXB0_D0 0x36
+#define MCP_RXB0SIDL 0x62
+#define MCP_RXB0DLC 0x65
+#define MCP_RXB0D0 0X66
+#define MCP_RXB1SIDL 0x72
+#define MCP_RXB1DLC 0x75
+#define MCP_RXB1D0 0x76
+#define PS1 0x06
+#define PS2 0x07
+#define PROPAG 0x02
+
+
+
+
 
