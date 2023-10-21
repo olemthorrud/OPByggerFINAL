@@ -148,7 +148,9 @@ int main(void)
 // 			}
 
 
-	can_test(1, 1, 4); 
+	char my_array[] = {'h', 'o', 'm', 'o'}; 
+	
+	can_test(2, 4, my_array); 
 	
 	return 0;
 }

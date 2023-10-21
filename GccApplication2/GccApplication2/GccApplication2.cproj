@@ -136,57 +136,60 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adc.h">
+    <Compile Include="Node_1\adc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="adc.c">
+    <Compile Include="Node_1\adc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="can.c">
+    <Compile Include="Node_1\can.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="can.h">
+    <Compile Include="Node_1\can.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="fonts.c">
+    <Compile Include="Node_1\fonts.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="fonts.h">
+    <Compile Include="Node_1\fonts.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcp_driver.c">
+    <Compile Include="Node_1\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcp_driver.h">
+    <Compile Include="Node_1\mcp_driver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="spi_driver.c">
+    <Compile Include="Node_1\mcp_driver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="spi_driver.h">
+    <Compile Include="Node_1\oled.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="oled.c">
+    <Compile Include="Node_1\oled.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="oled.h">
+    <Compile Include="Node_1\spi_driver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sram.c">
+    <Compile Include="Node_1\spi_driver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sram.h">
+    <Compile Include="Node_1\sram.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.c">
+    <Compile Include="Node_1\sram.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.h">
+    <Compile Include="Node_1\uart.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main.c">
+    <Compile Include="Node_1\uart.h">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Node_1" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

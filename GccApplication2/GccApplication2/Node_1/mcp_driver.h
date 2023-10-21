@@ -178,7 +178,7 @@ void set_loopback();
 #define MCP_TXB0_D0 0x36
 #define MCP_RXB0SIDL 0x62
 #define MCP_RXB0DLC 0x65
-#define MCP_RXB0D0 0X66
+#define MCP_RXB0D0 0x66
 #define MCP_RXB1SIDL 0x72
 #define MCP_RXB1DLC 0x75
 #define MCP_RXB1D0 0x76

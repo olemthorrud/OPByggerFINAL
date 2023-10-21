@@ -2,21 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-adc.c
+Node_1\adc.c
 
-can.c
+Node_1\can.c
 
-fonts.c
+Node_1\fonts.c
 
-mcp_driver.c
+Node_1\main.c
 
-spi_driver.c
+Node_1\mcp_driver.c
 
-oled.c
+Node_1\oled.c
 
-sram.c
+Node_1\spi_driver.c
 
-uart.c
+Node_1\sram.c
 
-main.c
+Node_1\uart.c
 

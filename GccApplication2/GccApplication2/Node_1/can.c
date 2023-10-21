@@ -53,7 +53,12 @@ int can_recieve(can_message* message) {
 
 
 void can_test(unsigned short id, unsigned char length, char data[]){
-	can_message to_send = {id, length, data};
+ 	
+		
+	can_message to_send;
+	to_send.id = id;
+	to_send.length = length;
+	memcpy(to_send.data, data, length);
 	can_send(&to_send);
 	//_delay_ms(50);
 	can_message received;
@@ -63,6 +68,6 @@ void can_test(unsigned short id, unsigned char length, char data[]){
 
 	for (int i = 0; i < received.length; i++)
 	{
-		printf("char is: %u \r \n", received.data[i]);
+		printf("char is: %c \r \n", received.data[i]);
 	}
 }
