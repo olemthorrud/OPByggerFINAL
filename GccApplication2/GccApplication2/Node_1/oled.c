@@ -153,6 +153,30 @@ void menu_init(int* arrow_pos){
 	oled_pos(*arrow_pos,0);
 	oled_print('>');
 	
+}
+
+
+
+void oled_test_meny(int* arrow_pos_ptr, int js_pos[4] ){
+	oled_init();
+	oled_clear();
+	oled_fill();
+	_delay_ms(1000);
+	oled_clear();
+	menu_init(arrow_pos_ptr);
+
+	while (1)
+	{
+
+		adc_driver(js_pos);
+		_delay_ms(350); // Denne var 100 ms, men det var plutselig veldig veldig raskt når jeg flyttet den inn i funksjonen
+		if (js_pos[1] < 80){
+			oled_arrow(arrow_pos_ptr, 1);
+			}else if (js_pos[1] > 200) {
+			oled_arrow(arrow_pos_ptr, 0);
+		}
 	}
+}
+	
 	
 	

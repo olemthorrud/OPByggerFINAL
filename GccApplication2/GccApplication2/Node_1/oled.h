@@ -36,3 +36,6 @@ void oled_arrow(int* arrow_pos , int k);
 
 
 void menu_init(int* arrow_pos);
+
+
+void oled_test_meny(int* arrow_pos_ptr, int js_pos[4]);

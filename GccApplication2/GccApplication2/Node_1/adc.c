@@ -89,7 +89,7 @@ void adc_driver(int* res_list){
 	res_list[3] = slider2;
 }
 
-void multifunction_board_test(int* ADC_driver_data ){
+void multifunction_board_test(int* ADC_driver_data ){ // Denne funksjonen returnerer joystickposisjoner og sliderposisjoner hver sekund
 		 while(1){
 			 _delay_ms(1000);
 			 

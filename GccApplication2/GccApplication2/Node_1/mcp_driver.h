@@ -23,8 +23,10 @@ void bit_modify(uint8_t address, uint8_t mask, uint8_t data);
 
 
 void mcp_init();
+void mcp_test();
 
 void set_loopback(); 
+void set_normal_mode();
 
 
 
@@ -182,6 +184,9 @@ void set_loopback();
 #define MCP_RXB1SIDL 0x72
 #define MCP_RXB1DLC 0x75
 #define MCP_RXB1D0 0x76
+
+
+
 #define PS1 0x06
 #define PS2 0x07
 #define PROPAG 0x02

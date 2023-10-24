@@ -23,134 +23,71 @@
 #include "mcp_driver.h"
 #include "can.h"
 
-/*
-int main(void)
-{
-	
-	volatile int js_pos[4]; 
-	adc_driver(js_pos); 
-	volatile int arrow_pos = 0;
-	int* arrow_pos_ptr = &arrow_pos; 
-	// Initialize UART
-	USART_Init(UBRR);
-	uart_link_printf();
-
-	//Initialize SRAM
-	SRAM_init(); 
-	
-	//Initialize ADC clock
-	adc_config_clock();
- 	 
-	  
-	  
-	  
-// 	int ADC_driver_data[4]; 
-// 	multifunction_board_test(ADC_driver_data);  
-	oled_init();
-	oled_clear();
-	oled_fill();
-	
-	_delay_ms(1000);
-	
-	oled_clear(); 
-	
-	
-	menu_init(arrow_pos_ptr);
-	_delay_ms(1000);
-	oled_arrow(arrow_pos_ptr , 1);
-	 
-	while (1)
-	{
-
-		adc_driver(js_pos);
-		_delay_ms(100);
-		if (js_pos[1] < 80){
-			oled_arrow(arrow_pos_ptr, 1);	
-		}else if (js_pos[1] > 200) {
-			oled_arrow(arrow_pos_ptr, 0);
-		}
-}
-	
-
-	//oled_clear(); 
-// 	char character =  'c'; 
-// 	oled_print(character); 
-//	print("hei");	
-
-//	oled_arrow(arrow_pos_ptr , 1);
-
-	return 0; 
-}
 
 
 
 
 
 
-/*
-int main(void)
-{
-	
-
-	// Initialize UART
-	USART_Init(UBRR);
-	uart_link_printf();
-	//Initialize SRAM
-	SRAM_init();
-	//Initialize ADC clock
-	adc_config_clock();
-	
-	
-	spi_init();
-	
-
-	
-	
-
-	//oled_clear();
-	// 	char character =  'c';
-	// 	oled_print(character);
-	//	print("hei");
-
-	//	oled_arrow(arrow_pos_ptr , 1);
-
-	return 0;
-}
 
 
-*/
 
 
 int main(void)
 {
+	
+	// Deklarering av globale verdier for behandling av skjermen og posisjoner på multifunction board
+
 		volatile int js_pos[4];
 		adc_driver(js_pos);
 		volatile int arrow_pos = 0;
 		int* arrow_pos_ptr = &arrow_pos;
+		
+	
+	// UART
+	
 		USART_Init(UBRR);
 		uart_link_printf();
-		SRAM_init();
-		adc_config_clock();
-		oled_init();
-		//mcp_init();
-		can_init();
-
 		
-// 		uint8_t send = 0x01;
-// 		uint8_t address = 31;
-// 		uint8_t lest;
-// 
-// 			while(1){
-// 				mcp_write(address, send);
-// 				lest = mcp_read(address);
-// 				//printf("%u " , send);
-// 				printf("%u " , lest);
-// 			}
 
+	// Initialize SRAM
+	
+		SRAM_init();
+	
+	
+	// Initialize ADC clock
+	
+		adc_config_clock();
+			
+			
+	// oled
+	
+		oled_init();
+		
+		// int ADC_driver_data[4];                              //Hvor verdiene i funksjonen under lagres
+		// multifunction_board_test(ADC_driver_data);           //Testfunskjon for å hente 4 verdier fra js og sliders. Kan nok slås sammen med den under
+		// oled_test_meny(arrow_pos_ptr,js_pos);              //Testfunskjon til menyen på oledskjermen
+		
+		
+	// Initialisering av can. Initfunksjonen setter den i loopback
+		
+		can_init();
+	
+		// mcp_test();                                        // Test av Spi sender 81 til et register og leser det igjen
+		 char my_array[] = {'o', 'l', 'e', 'o'};             //Arrayet som skal sendes i loopbackmode i can_test
+		 //can_test(2, 4, my_array);                           //Funksjon som sender innad i can-kontrolleren i loopback mode
+		 
 
-	char my_array[] = {'h', 'o', 'm', 'o'}; 
 	
-	can_test(2, 4, my_array); 
 	
+		set_normal_mode();
+	
+		can_message to_send;
+		to_send.id = 2;
+		to_send.length = 4;
+		memcpy(to_send.data, my_array, 4);
+		can_send(&to_send);
+
 	return 0;
 }
+
