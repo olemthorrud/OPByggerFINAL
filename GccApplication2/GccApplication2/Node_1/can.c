@@ -71,3 +71,21 @@ void can_test(unsigned short id, unsigned char length, char data[]){
 		printf("char is: %c \r \n", received.data[i]);
 	}
 }
+
+
+void send_js_pos(uint8_t* js_pos){
+	adc_driver(js_pos);
+	can_message to_send;
+	to_send.id = 1;
+	to_send.length = 4;
+	//char* js_pos_as_chars;
+//	printf("[ ");
+// 	for (int i = 0; i < 4; i++)
+// 	{
+// 		printf("%d , ",js_pos[i]); 
+// 	}
+// 	printf("]");
+// 	printf("\r\n");
+	memcpy(to_send.data, js_pos, 4);
+	can_send(&to_send);
+}

@@ -52,8 +52,12 @@ void CAN0_Handler( void )
 			printf("CAN0 message arrived in non-used mailbox\n\r");
 		}
 		unsigned short balle = message.id; 
-		printf("Message id is %u\n " , (unsigned int)balle);
-
+		//printf("Message id is %u\n " , (unsigned int)balle);
+		for (int i = 0 ; i< message.data_length; i++)
+		{
+			
+		printf("%d ", message.data[i]);
+		}
 		if(DEBUG_INTERRUPT)printf("message id: %d\n\r", message.id);
 		if(DEBUG_INTERRUPT)printf("message data length: %d\n\r", message.data_length);
 		for (int i = 0; i < message.data_length; i++)
