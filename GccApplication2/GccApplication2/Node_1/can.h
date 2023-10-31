@@ -23,3 +23,6 @@ void can_send(can_message* message);
 int can_recieve(can_message* message);
 
 void can_test(unsigned short id, unsigned char length, char data[]); 
+
+
+void send_js_pos(uint8_t* js_pos);

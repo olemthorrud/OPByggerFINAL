@@ -26,16 +26,19 @@
 int main(void)
 {
 	/* Initialize the SAM system */
+	
 	SystemInit();
+	
 	configure_uart();
+	
+	printf("Size of char: %u bytes\n", sizeof(char));
+	printf("Size of int: %u bytes\n", sizeof(int));
+	 
 	//uint32_t BR = (SMP << 24) | (BRP << 16) | ((SJW-1) << 12) | ((PROPAG-1) << 8) | ((PS1-1) << 4) | (PS2 - 1);
 	uint32_t BR = 0x00143156;
-	can_init_def_tx_rx_mb(BR);
+	can_init_def_tx_rx_mb(BR); 
 	
-	while(1){}
-	
-	
-
-
-	led_test();
+	while(1){
+		led_test();
+	}
 }

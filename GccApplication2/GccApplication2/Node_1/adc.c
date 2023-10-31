@@ -68,7 +68,7 @@ int convert_horiz_JS(uint8_t A){
 	return percentage;
 }
 
-void adc_driver(int* res_list){
+void adc_driver(uint8_t* res_list){
 	
 	volatile int horiz_data, vert_data, slider1, slider2;
 	
@@ -100,6 +100,6 @@ void multifunction_board_test(int* ADC_driver_data ){ // Denne funksjonen return
 				 printf("%d", ADC_driver_data[i]);
 				 printf(" , ");
 			 }
-			 printf("] \n");
+			 printf("] \r \n");
 		 }
 }
