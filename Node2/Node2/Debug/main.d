@@ -107,7 +107,7 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\types.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\stdio.h \
  .././led.h .././delay.h .././utdelt/uart.h .././utdelt/printf-stdarg.h \
- .././utdelt/can_controller.h .././utdelt/can_interrupt.h
+ .././utdelt/can_controller.h .././utdelt/can_interrupt.h .././pwm.h
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include/sam.h:
 
@@ -334,3 +334,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 .././utdelt/can_controller.h:
 
 .././utdelt/can_interrupt.h:
+
+.././pwm.h:

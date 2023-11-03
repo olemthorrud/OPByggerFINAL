@@ -20,25 +20,62 @@
 #include "utdelt/printf-stdarg.h"
 #include "utdelt/can_controller.h"
 #include "utdelt/can_interrupt.h"
-
+#include "pwm.h"
 
 
 int main(void)
 {
 	/* Initialize the SAM system */
 	
-	SystemInit();
 	
+	SystemInit();
 	configure_uart();
 	
-	printf("Size of char: %u bytes\n", sizeof(char));
-	printf("Size of int: %u bytes\n", sizeof(int));
+	volatile uint8_t js_pos[4];
 	 
-	//uint32_t BR = (SMP << 24) | (BRP << 16) | ((SJW-1) << 12) | ((PROPAG-1) << 8) | ((PS1-1) << 4) | (PS2 - 1);
 	uint32_t BR = 0x00143156;
 	can_init_def_tx_rx_mb(BR); 
 	
-	while(1){
-		led_test();
+	
+	WDT->WDT_MR = WDT_MR_WDDIS;  // Disable watchdog timer
+	pwm();
+	
+	
+	//set_duty_cycle(0.5,5);
+	//set_duty_cycle(0.5,6);
+	
+	
+	get_js_pos(js_pos);
+	
+/*	
+	while(1){	
+ 	printf("[ ");
+	for (int i = 0 ; i< 4; i++)
+	{
+		printf("%d ,", js_pos[i]);
 	}
+	printf("] \n\r");
+	get_js_pos(js_pos);
+	_delay_ms(500); 
+	}
+*/	
+	printf("Jeg er her");
+	//led_test();
+	while(1){
+		
+		set_duty_cycle(calculate_dc(js_pos,0),5);
+		set_duty_cycle(calculate_dc(js_pos,1),6);
+
+		
+		get_js_pos(js_pos);
+		
+		printf("[ ");
+			for (int i = 0 ; i< 4; i++)
+			{
+				printf("%d ,", js_pos[i]);
+			}
+			printf("] \n\r");
+		
+	}
+
 }

@@ -86,8 +86,13 @@ void mcp_init() {
 	mcp_reset();
 
 	_delay_ms(3);
+	
+	bit_modify(MCP_CANCTRL, MODE_MASK, MODE_CONFIG);
+	
+	
 
 	uint8_t value = mcp_read(MCP_CANSTAT); 
+	
 	if ((value & MODE_MASK) != MODE_CONFIG) {
 		printf("ERROR: MCP2515 not in configuration mode after reset. \r\n");
 	}

@@ -8,14 +8,15 @@
  *
  */ 
 
-
+#include <stdio.h>
+#include <stdint.h>
 #ifndef CAN_INTERRUPT_H_
 #define CAN_INTERRUPT_H_
 void CAN0_Handler       ( void );
 
 
 
-
+void get_js_pos(uint8_t* adress);
 
 
 #endif /* CAN_INTERRUPT_H_ */

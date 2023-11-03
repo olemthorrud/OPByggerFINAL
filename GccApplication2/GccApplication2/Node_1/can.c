@@ -10,7 +10,6 @@
 
 void can_init(){
 	mcp_init();
-	set_loopback();
 }
 
 

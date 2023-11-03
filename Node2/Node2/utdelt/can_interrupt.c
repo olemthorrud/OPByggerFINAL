@@ -19,6 +19,8 @@
 
 #define DEBUG_INTERRUPT 0
 
+volatile uint8_t js_pos_2[4];
+
 /**
  * \brief CAN0 Interrupt handler for RX, TX and bus error interrupts
  *
@@ -51,13 +53,23 @@ void CAN0_Handler( void )
 		{
 			printf("CAN0 message arrived in non-used mailbox\n\r");
 		}
-		unsigned short balle = message.id; 
-		//printf("Message id is %u\n " , (unsigned int)balle);
+
+		
+	
+		
+		printf("[ ");
 		for (int i = 0 ; i< message.data_length; i++)
 		{
 			
-		printf("%d ", message.data[i]);
+			printf("%d ,", message.data[i]);
+			js_pos_2[i] = message.data[i];
 		}
+		printf("] \n\r");
+		
+		
+		
+		
+		
 		if(DEBUG_INTERRUPT)printf("message id: %d\n\r", message.id);
 		if(DEBUG_INTERRUPT)printf("message data length: %d\n\r", message.data_length);
 		for (int i = 0; i < message.data_length; i++)
@@ -89,4 +101,12 @@ void CAN0_Handler( void )
 	
 	NVIC_ClearPendingIRQ(ID_CAN0);
 	//sei();*/
+}
+
+void get_js_pos(uint8_t* adress){
+	for (int i = 0; i < 4; i++)
+	{
+		adress[i] = js_pos_2[i]; 
+	}
+	 
 }
