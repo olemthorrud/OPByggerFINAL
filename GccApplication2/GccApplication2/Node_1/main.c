@@ -95,11 +95,8 @@ int main(void)
 				 
 				 printf(" , ");
 			 }
-			 printf("] \r \n");
-			
-			 
-			send_js_pos(js_pos);
-			_delay_ms((500)); 	
+			 printf("] \r \n");	 
+		send_js_pos(js_pos); 	
 		}
 		
 		
