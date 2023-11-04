@@ -21,61 +21,44 @@
 #include "utdelt/can_controller.h"
 #include "utdelt/can_interrupt.h"
 #include "pwm.h"
+#include "adc.h"
 
 
 int main(void)
 {
-	/* Initialize the SAM system */
-	
+	/* Initialize the SAM system, UART, CAN, internal ADC on Arduino and PWM. We are currently disabling the watch dog timer entirely for testing purposes. */
 	
 	SystemInit();
-	configure_uart();
-	
-	volatile uint8_t js_pos[4];
-	 
+	configure_uart();  
 	uint32_t BR = 0x00143156;
 	can_init_def_tx_rx_mb(BR); 
-	
-	
-	WDT->WDT_MR = WDT_MR_WDDIS;  // Disable watchdog timer
+	adc_init();
 	pwm();
+	WDT->WDT_MR = WDT_MR_WDDIS;  // Disable watchdog timer
+	
+	/* Variables to keep track of joystick position and goal-scoring */
+	
+	volatile uint8_t js_pos[4];
+	volatile uint16_t* adc_converted;
+	*adc_converted = NULL;
+	int score = 0;
+	int newGoal = 0; 	
 	
 	
-	//set_duty_cycle(0.5,5);
-	//set_duty_cycle(0.5,6);
-	
-	
-	get_js_pos(js_pos);
-	
-/*	
-	while(1){	
- 	printf("[ ");
-	for (int i = 0 ; i< 4; i++)
-	{
-		printf("%d ,", js_pos[i]);
-	}
-	printf("] \n\r");
-	get_js_pos(js_pos);
-	_delay_ms(500); 
-	}
-*/	
-	printf("Jeg er her");
-	//led_test();
 	while(1){
 		
+		get_js_pos(js_pos);
 		set_duty_cycle(calculate_dc(js_pos,0),5);
 		set_duty_cycle(calculate_dc(js_pos,1),6);
-
 		
-		get_js_pos(js_pos);
+		newGoal = getNewGoal(adc_converted); 
 		
-		printf("[ ");
-			for (int i = 0 ; i< 4; i++)
-			{
-				printf("%d ,", js_pos[i]);
-			}
-			printf("] \n\r");
+		if (newGoal){
+			score++;
+			printf("GOOOOLAZZOO!! The score currently is: %d \n \r", score); 
+			_delay_ms(2000); 
+		}
 		
 	}
-
+		
 }
