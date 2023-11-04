@@ -39,6 +39,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../adc.c \
 ../delay.c \
 ../Device_Startup/startup_sam3xa.c \
 ../Device_Startup/system_sam3xa.c \
@@ -58,6 +59,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+adc.o \
 delay.o \
 Device_Startup/startup_sam3xa.o \
 Device_Startup/system_sam3xa.o \
@@ -70,6 +72,7 @@ utdelt/printf-stdarg.o \
 utdelt/uart.o
 
 OBJS_AS_ARGS +=  \
+adc.o \
 delay.o \
 Device_Startup/startup_sam3xa.o \
 Device_Startup/system_sam3xa.o \
@@ -82,6 +85,7 @@ utdelt/printf-stdarg.o \
 utdelt/uart.o
 
 C_DEPS +=  \
+adc.d \
 delay.d \
 Device_Startup/startup_sam3xa.d \
 Device_Startup/system_sam3xa.d \
@@ -94,6 +98,7 @@ utdelt/printf-stdarg.d \
 utdelt/uart.d
 
 C_DEPS_AS_ARGS +=  \
+adc.d \
 delay.d \
 Device_Startup/startup_sam3xa.d \
 Device_Startup/system_sam3xa.d \
@@ -123,6 +128,13 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+./adc.o: .././adc.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAM3X8E__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\5.4.0\CMSIS\Core\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAM3X_DFP\1.0.50\include"  -Og -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m3 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./delay.o: .././delay.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1

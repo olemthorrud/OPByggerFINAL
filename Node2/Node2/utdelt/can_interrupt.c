@@ -57,14 +57,14 @@ void CAN0_Handler( void )
 		
 	
 		
-		printf("[ ");
+		//printf("[ ");
 		for (int i = 0 ; i< message.data_length; i++)
 		{
 			
-			printf("%d ,", message.data[i]);
+			//printf("%d ,", message.data[i]);
 			js_pos_2[i] = message.data[i];
 		}
-		printf("] \n\r");
+	//	printf("] \n\r");
 		
 		
 		
