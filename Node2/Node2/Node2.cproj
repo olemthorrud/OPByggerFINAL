@@ -165,6 +165,15 @@
     <Compile Include="adc.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="pid.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dac.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dac.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="delay.c">
       <SubType>compile</SubType>
     </Compile>
@@ -184,6 +193,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pid.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="pwm.c">

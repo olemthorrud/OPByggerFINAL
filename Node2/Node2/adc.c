@@ -26,6 +26,7 @@ uint16_t adc_drive(uint16_t* val){
 	*val = ADC->ADC_LCDR; 
 	//printf("ADC is: %u \n \r", *val);
 	return *val;
+	
 }
 
 int getNewGoal(uint16_t* val){
@@ -34,8 +35,10 @@ int getNewGoal(uint16_t* val){
 	 
 	from_ADC = adc_drive(val);
 	
-	if (from_ADC < 700){
+	if (from_ADC < 1800){  //This value has been different. First time we set it as 700
 		return_value = 1; 
 	}
 	return return_value; 
 }
+
+

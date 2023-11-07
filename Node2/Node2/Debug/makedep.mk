@@ -4,6 +4,10 @@
 
 adc.c
 
+pid.c
+
+dac.c
+
 delay.c
 
 Device_Startup\startup_sam3xa.c
