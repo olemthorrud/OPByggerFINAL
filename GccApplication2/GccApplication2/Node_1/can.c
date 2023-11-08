@@ -88,3 +88,28 @@ void send_js_pos(uint8_t* js_pos){
 	memcpy(to_send.data, js_pos, 4);
 	can_send(&to_send);
 }
+
+
+can_message* generate_button_IR_can_msg(){
+	unsigned short button_ir_ID = 30;
+	unsigned char button_IR_length = 8;
+	 
+	char button_IR_data[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+	can_message button_IR_message;
+	memcpy(button_IR_message.data, button_IR_data, 8);
+	button_IR_message.id = button_ir_ID;
+	button_IR_message.length = button_IR_length;
+	
+	return &button_IR_message; 
+}
+
+/*  Funksjon for å sende at vi trykker knapp
+void send_button_push(){
+	can_message to_send;
+	to_send.id = 2;
+	to_send.length = 1;
+	uint8_t b = 1;
+	memcpy(to_send.data, b, 1);
+	can_send(&to_send);
+}
+*/

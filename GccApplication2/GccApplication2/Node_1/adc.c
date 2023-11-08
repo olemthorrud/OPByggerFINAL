@@ -103,3 +103,25 @@ void multifunction_board_test(int* ADC_driver_data ){ // Denne funksjonen return
 			 printf("] \r \n");
 		 }
 }
+
+void button_IR_init(){
+	DDRD &= ~(1<<PD3); // Set PD3 as input
+	PORTD |= (1<<PD3); //enable pull up resistor
+	
+	MCUCR |= (1<<ISC11); // Set for falling edge detection
+	MCUCR &= ~(1<<ISC10); // Clear bit for falling edge detection
+	
+	GICR |= (1<<INT1); //to enable INT1
+	
+	sei(); 
+}
+
+ISR(INT1_vect){
+	can_message* button_IR_message; 
+	button_IR_message = generate_button_IR_can_msg(); 
+	can_send(button_IR_message);
+	
+	printf("I think i sent it!");  
+}
+
+

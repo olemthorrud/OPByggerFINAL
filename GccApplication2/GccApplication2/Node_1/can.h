@@ -26,3 +26,14 @@ void can_test(unsigned short id, unsigned char length, char data[]);
 
 
 void send_js_pos(uint8_t* js_pos);
+
+
+void send_button_push();
+
+can_message* generate_button_IR_can_msg(); 
+
+//To facilitate sending a CAN message that tells of an interrupt
+
+
+
+

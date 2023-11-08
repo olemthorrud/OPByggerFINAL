@@ -36,9 +36,10 @@ int main(void)
 	can_init_def_tx_rx_mb(BR); 
 	adc_init();
 	pwm();
-	//dac_init();
+	dac_init();
 	WDT->WDT_MR = WDT_MR_WDDIS;  // Disable watchdog timer
-	motor_init();
+	
+	start();  // sets to correct position and initiates motor
 	
 	/* Variables to keep track of joystick position and goal-scoring */
 	
@@ -47,42 +48,79 @@ int main(void)
 	*adc_converted = NULL;
 	int score = 0;
 	int newGoal = 0; 	
-	volatile uint16_t* integrated_error;
-	*integrated_error = NULL;
 	
-	uint8_t balle;
-	uint8_t test_8; 
+	uint8_t message_from_button[8]; 
 	
-	uint16_t test = 0; 	
-	//int test = 0; 	
-	uint8_t ref = 70; 
+	
+	
+	//volatile uint16_t integrated_error = 0;
+	volatile int integrated_error = 0;
+ 	uint8_t power = 0;
+ 	uint8_t calculated_pos; 
+	int16_t encoder_val = 0; 
+	
+	
+
+
+
 	while(1){
-		//	led_test();
+
+
 		//_delay_ms(500); 
- 		get_js_pos(js_pos);
-// 		set_duty_cycle(calculate_dc(js_pos,0),5);
-// 		set_duty_cycle(calculate_dc(js_pos,1),6);
-// 		
+  		//get_js_pos(js_pos);
+//  		set_duty_cycle(calculate_dc(js_pos,0),5);
+//  		set_duty_cycle(calculate_dc(js_pos,1),6);
+		 
+		
 // 		newGoal = getNewGoal(adc_converted); 
-// 		
 // 		if (newGoal){
 // 			score++;
 // 			printf("GOOOOLAZZOO!! The score currently is: %d \n \r", score);
 // 			_delay_ms(2000);
 // 		}
  		
-  		//printf("BALLE %u \r \n" , js_pos[0]);
-		//_delay_ms(100); 
-  		
- 		//test_8 = calibrate_enc(get_stat());
- 		//printf("Position is : %u \r \n", test_8);
-		  
- 		test = controller(ref, calibrate_enc(get_stat()));   
- 		printf("reference is : %u, recorded position is: %u, and the difference is: %u \r \n", ref, get_stat(), test);  
-		dac_transmit(test); //dette gikk dårlig. Du må se på kontrolleren, den løsningen jeg har prøvd meg på der funker ikke noe særlig. 
-// 		_delay_ms(100);
+//   		printf("Ref is %u \r \n" , js_pos[0]);
+ 		//dac_transmit(js_pos[0]);
+ 	//	_delay_ms(10); 
+ 	//	test_8 = calibrate_enc(get_stat());
+	 
+	 
+	 
+// Tilhørende en ok fungerende pi K_p = 0.8
+/*
+	    test = get_stat();
+		test_8 = calibrate_enc(test);
+		printf("%u ", js_pos[0]);
+ 		printf("%u ", test_8);
+ 		balle = pi_controller(js_pos[0], test_8, &integrated_error); 
+		printf("padrag %d  \r \n", balle);
+		_delay_ms(2);
+		dac_transmit(balle);
+*/
 
-	
+
+//Tilhørende en p som funker. K_P 1.8		
+
+
+// 		encoder_val = get_stat();
+// 		calculated_pos = calibrate_enc(encoder_val);
+// 		power = p_controller(js_pos[0],encoder_val);
+// 		_delay_ms(2);
+// 		dac_transmit(power);
+// 	
+
+
+ 		get_js_pos(js_pos); //JSPOS SENDES NÅ IKKE FRA NODE 1, IKKE BLI STRESSA
+		
+		//printf("%d", message_from_button[0]);
+
+// 	    encoder_val = get_stat();
+// 	    calculated_pos = calibrate_enc(encoder_val);
+// 	    power = pi2_controller(js_pos[0], calculated_pos, &integrated_error);
+// 		//printf("verdiene fra multifuc board er %d, %d, %d, %d  \r \n", js_pos[0], js_pos[1], js_pos[2], js_pos[3]);
+// 	    _delay_ms(20);
+// 	    //transmit(power);
+
 		
  	} 		
 }

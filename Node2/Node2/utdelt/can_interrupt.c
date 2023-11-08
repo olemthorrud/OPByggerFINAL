@@ -42,12 +42,14 @@ void CAN0_Handler( void )
 		if(can_sr & CAN_SR_MB1)  //Mailbox 1 event
 		{
 			can_receive(&message, 1);
+			printf("there was a mailbox 1 event"); 
 
 		}
 		else if(can_sr & CAN_SR_MB2) //Mailbox 2 event
 		
 		{
 			can_receive(&message, 2);
+			printf("there was a mailbox 2 event"); 
 		}
 		else
 		{
@@ -56,18 +58,21 @@ void CAN0_Handler( void )
 
 		
 	
-		
-		//printf("[ ");
+//		if (message.id == 1)
+//		{
+//		printf("[ ");
 		for (int i = 0 ; i< message.data_length; i++)
 		{
 			
-			//printf("%d ,", message.data[i]);
+//			printf("%d ,", message.data[i]); 
 			js_pos_2[i] = message.data[i];
 		}
-	//	printf("] \n\r");
+//		printf("] \n\r");
 		
-		
-		
+//		}
+//		else if(message.id == 2){
+//			printf("Vi har et knappetrykk \r \n");
+//		}
 		
 		
 		if(DEBUG_INTERRUPT)printf("message id: %d\n\r", message.id);
@@ -108,5 +113,4 @@ void get_js_pos(uint8_t* adress){
 	{
 		adress[i] = js_pos_2[i]; 
 	}
-	 
 }
