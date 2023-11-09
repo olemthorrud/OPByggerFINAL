@@ -17,6 +17,6 @@ void CAN0_Handler       ( void );
 
 
 void get_js_pos(uint8_t* adress);
-
+void button_push();
 
 #endif /* CAN_INTERRUPT_H_ */

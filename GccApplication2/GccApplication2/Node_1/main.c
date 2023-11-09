@@ -43,7 +43,6 @@ int main(void)
 		adc_driver(js_pos);
 		volatile int arrow_pos = 0;
 		int* arrow_pos_ptr = &arrow_pos;
-		
 	
 	// UART
 	
@@ -83,7 +82,7 @@ int main(void)
 	
 		set_normal_mode();
 		
-		button_IR_init(); //OLES KODE 
+	//	button_IR_init(); //OLES KODE 
 		
 // 		can_message to_send;
 // 		to_send.id = 2;
@@ -92,15 +91,16 @@ int main(void)
 // 		can_send(&to_send);
 		
 		while(1){
-// 			 printf("[");
-// 			 for (int i = 0; i < 4; i++){
-// 				 printf("%d", js_pos[i]);
-// 				 
-// 				 printf(" , ");
-// 			 }
- 			 //printf("] \r \n");	 
-		//send_js_pos(js_pos); 	
-		
+		//_delay_ms(200);
+ 			 printf("[");
+			 for (int i = 0; i < 4; i++){
+ 			 				 printf("%d", js_pos[i]);
+ 			 				 
+ 			 				 printf(" , ");
+ 			 			 }
+ 			  			 printf("] \r \n");	 
+		send_js_pos(js_pos); 	
+		//printf("I havent stopped yet"); 
 		//send_button_push(); check for this
 		}
 		

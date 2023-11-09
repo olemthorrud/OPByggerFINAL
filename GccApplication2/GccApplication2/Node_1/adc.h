@@ -17,8 +17,6 @@
 #include "can.h"
 
 
-
-
 void adc_config_clock(void);
 
 uint8_t adc_read(uint8_t channel);
@@ -30,3 +28,6 @@ void adc_driver(uint8_t* ADC_driver_data); //ADC_driver_data er en array som sen
 void multifunction_board_test(int* ADC_driver_data); 
 
 void button_IR_init(); 
+
+
+//void set_button_high();

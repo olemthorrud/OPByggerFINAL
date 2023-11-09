@@ -8,6 +8,7 @@
 #pragma once
 
 #include "mcp_driver.h"
+#define button_init_val 0
 
 typedef struct{
 	unsigned short id;
@@ -15,6 +16,7 @@ typedef struct{
 	char data[8];
 }can_message;
 	
+//int* button; 
 
 void can_init();
 

@@ -74,6 +74,14 @@ void can_test(unsigned short id, unsigned char length, char data[]){
 
 void send_js_pos(uint8_t* js_pos){
 	adc_driver(js_pos);
+// 	printf("%d" , *button);
+// 	if (*button = 1)
+// 	{
+// 		js_pos[2] = 1;
+// 		
+// 		*button = 0; 
+// 	}
+// 	
 	can_message to_send;
 	to_send.id = 1;
 	to_send.length = 4;
@@ -87,17 +95,17 @@ void send_js_pos(uint8_t* js_pos){
 // 	printf("\r\n");
 	memcpy(to_send.data, js_pos, 4);
 	can_send(&to_send);
+//	js_pos[2] = 0;
 }
 
 
 can_message* generate_button_IR_can_msg(){
-	unsigned short button_ir_ID = 30;
-	unsigned char button_IR_length = 8;
+	unsigned char button_IR_length = 1;
 	 
-	char button_IR_data[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+	char button_IR_data[] = {'a'};
 	can_message button_IR_message;
-	memcpy(button_IR_message.data, button_IR_data, 8);
-	button_IR_message.id = button_ir_ID;
+	memcpy(button_IR_message.data, button_IR_data, 1);
+	button_IR_message.id = 3;
 	button_IR_message.length = button_IR_length;
 	
 	return &button_IR_message; 
