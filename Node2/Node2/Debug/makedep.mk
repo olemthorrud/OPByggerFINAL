@@ -20,6 +20,8 @@ main.c
 
 pwm.c
 
+solenoide.c
+
 utdelt\can_controller.c
 
 utdelt\can_interrupt.c

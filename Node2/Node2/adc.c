@@ -11,7 +11,7 @@ void adc_init(){
 	ADC->ADC_CR = 1;
 	
 
-	ADC->ADC_MR = (1 <<7);
+	ADC->ADC_MR = (1 << 7);
 	
 	
 	PMC->PMC_PCR |= (1<< 28) |(0 << 16) |  (0 << 17) | (p_id);
@@ -34,7 +34,7 @@ int getNewGoal(uint16_t* val){
 	return_value = 0; 
 	 
 	from_ADC = adc_drive(val);
-	
+	//printf("FROMADC is: %u \r \n", from_ADC); 
 	if (from_ADC < 1800){  //This value has been different. First time we set it as 700
 		return_value = 1; 
 	}

@@ -204,6 +204,12 @@
     <Compile Include="pwm.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="solenoide.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="solenoide.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="utdelt\can_controller.c">
       <SubType>compile</SubType>
     </Compile>

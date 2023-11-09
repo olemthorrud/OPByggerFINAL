@@ -16,11 +16,13 @@ Node_1/main.d Node_1/main.o: ../Node_1/main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../Node_1/uart.h ../Node_1/sram.h ../Node_1/adc.h ../Node_1/oled.h \
+ ../Node_1/uart.h ../Node_1/sram.h ../Node_1/adc.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ ../Node_1/can.h ../Node_1/mcp_driver.h ../Node_1/oled.h \
  ../Node_1/fonts.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- ../Node_1/spi_driver.h ../Node_1/mcp_driver.h ../Node_1/can.h
+ ../Node_1/spi_driver.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -62,6 +64,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../Node_1/adc.h:
 
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+../Node_1/can.h:
+
+../Node_1/mcp_driver.h:
+
 ../Node_1/oled.h:
 
 ../Node_1/fonts.h:
@@ -71,7 +79,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 ../Node_1/spi_driver.h:
-
-../Node_1/mcp_driver.h:
-
-../Node_1/can.h:

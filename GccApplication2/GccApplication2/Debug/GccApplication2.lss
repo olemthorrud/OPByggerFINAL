@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001074  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000238  00000000  00000000  000010b0  2**0
+  5 .debug_aranges 00000240  00000000  00000000  000010b0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000024d3  00000000  00000000  000012e8  2**0
+  6 .debug_info   0000254f  00000000  00000000  000012f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000118e  00000000  00000000  000037bb  2**0
+  7 .debug_abbrev 000011d7  00000000  00000000  0000383f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000135c  00000000  00000000  00004949  2**0
+  8 .debug_line   00001373  00000000  00000000  00004a16  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000005bc  00000000  00000000  00005ca8  2**2
+  9 .debug_frame  000005cc  00000000  00000000  00005d8c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000849  00000000  00000000  00006264  2**0
+ 10 .debug_str    0000088f  00000000  00000000  00006358  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001218  00000000  00000000  00006aad  2**0
+ 11 .debug_loc    00001218  00000000  00000000  00006be7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000200  00000000  00000000  00007cc5  2**0
+ 12 .debug_ranges 00000208  00000000  00000000  00007dff  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -425,6 +425,10 @@ void send_js_pos(uint8_t* js_pos){
  276:	8c 01       	movw	r16, r24
 	adc_driver(js_pos);
  278:	0e 94 ac 00 	call	0x158	; 0x158 <adc_driver>
+// 		
+// 		*button = 0; 
+// 	}
+// 	
 	can_message to_send;
 	to_send.id = 1;
  27c:	81 e0       	ldi	r24, 0x01	; 1
@@ -453,6 +457,8 @@ void send_js_pos(uint8_t* js_pos){
  29a:	ce 01       	movw	r24, r28
  29c:	01 96       	adiw	r24, 0x01	; 1
  29e:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <can_send>
+//	js_pos[2] = 0;
+}
  2a2:	2b 96       	adiw	r28, 0x0b	; 11
  2a4:	0f b6       	in	r0, 0x3f	; 63
  2a6:	f8 94       	cli
@@ -491,7 +497,6 @@ int main(void)
  2ce:	1e 82       	std	Y+6, r1	; 0x06
  2d0:	1d 82       	std	Y+5, r1	; 0x05
 		int* arrow_pos_ptr = &arrow_pos;
-		
 	
 	// UART
 	
@@ -533,12 +538,12 @@ int main(void)
 	
 		set_normal_mode();
  2ee:	0e 94 f3 01 	call	0x3e6	; 0x3e6 <set_normal_mode>
-// 		to_send.length = 8;
 // 		memcpy(to_send.data, my_array, 8);
 // 		can_send(&to_send);
 		
 		while(1){
-			 printf("[");
+		//_delay_ms(200);
+ 			 printf("[");
  2f2:	8b e5       	ldi	r24, 0x5B	; 91
  2f4:	90 e0       	ldi	r25, 0x00	; 0
  2f6:	0e 94 2b 03 	call	0x656	; 0x656 <putchar>
@@ -546,7 +551,7 @@ int main(void)
  2fa:	00 e0       	ldi	r16, 0x00	; 0
  2fc:	10 e0       	ldi	r17, 0x00	; 0
  2fe:	1d c0       	rjmp	.+58     	; 0x33a <main+0x82>
-				 printf("%d", js_pos[i]);
+ 			 				 printf("%d", js_pos[i]);
  300:	e1 e0       	ldi	r30, 0x01	; 1
  302:	f0 e0       	ldi	r31, 0x00	; 0
  304:	ec 0f       	add	r30, r28
@@ -561,18 +566,18 @@ int main(void)
  316:	9f 93       	push	r25
  318:	8f 93       	push	r24
  31a:	0e 94 15 03 	call	0x62a	; 0x62a <printf>
-				 
-				 printf(" , ");
+ 			 				 
+ 			 				 printf(" , ");
  31e:	89 e0       	ldi	r24, 0x09	; 9
  320:	91 e0       	ldi	r25, 0x01	; 1
  322:	9f 93       	push	r25
  324:	8f 93       	push	r24
  326:	0e 94 15 03 	call	0x62a	; 0x62a <printf>
-// 		memcpy(to_send.data, my_array, 8);
 // 		can_send(&to_send);
 		
 		while(1){
-			 printf("[");
+		//_delay_ms(200);
+ 			 printf("[");
 			 for (int i = 0; i < 4; i++){
  32a:	0f 5f       	subi	r16, 0xFF	; 255
  32c:	1f 4f       	sbci	r17, 0xFF	; 255
@@ -585,11 +590,11 @@ int main(void)
  33a:	04 30       	cpi	r16, 0x04	; 4
  33c:	11 05       	cpc	r17, r1
  33e:	04 f3       	brlt	.-64     	; 0x300 <main+0x48>
-				 printf("%d", js_pos[i]);
-				 
-				 printf(" , ");
-			 }
-			 printf("] \r \n");	 
+ 			 				 printf("%d", js_pos[i]);
+ 			 				 
+ 			 				 printf(" , ");
+ 			 			 }
+ 			  			 printf("] \r \n");	 
  340:	8d e0       	ldi	r24, 0x0D	; 13
  342:	91 e0       	ldi	r25, 0x01	; 1
  344:	0e 94 32 03 	call	0x664	; 0x664 <puts>
@@ -597,6 +602,8 @@ int main(void)
  348:	ce 01       	movw	r24, r28
  34a:	01 96       	adiw	r24, 0x01	; 1
  34c:	0e 94 2f 01 	call	0x25e	; 0x25e <send_js_pos>
+		//printf("I havent stopped yet"); 
+		//send_button_push(); check for this
 		}
  350:	d0 cf       	rjmp	.-96     	; 0x2f2 <main+0x3a>
 

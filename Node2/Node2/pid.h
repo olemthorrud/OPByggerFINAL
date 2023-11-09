@@ -10,8 +10,8 @@
 #include "delay.h"
 
 #define K_p 1
-#define K_i 1
-#define T 1
+#define K_i 2
+#define T 1/100
 
 
 
@@ -26,7 +26,11 @@
 
 
 
-uint16_t controller(uint8_t ref, uint8_t val); // Husk å ta inn pointer til integrert opp feil
+uint8_t p_controller(uint8_t ref, uint8_t val); // Husk å ta inn pointer til integrert opp feil
+
+uint8_t pi_controller(uint8_t ref, uint8_t val, int16_t *integrated_error); 
+
+uint8_t pi2_controller(uint8_t ref, uint8_t val, int *integrated_error); 
 
 int16_t get_stat();
 
@@ -38,3 +42,6 @@ uint8_t calibrate_enc(int16_t from_encoder);
 void set_dir_RtoL();
 
 void set_dir_LtoR();
+
+
+void start();

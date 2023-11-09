@@ -84,6 +84,8 @@ Discarded input sections
                 0x00000000       0x4d Node_1/can.o
  .text.can_test
                 0x00000000       0xbe Node_1/can.o
+ .text.generate_button_IR_can_msg
+                0x00000000        0x6 Node_1/can.o
  .text          0x00000000        0x0 Node_1/fonts.o
  .data          0x00000000        0x0 Node_1/fonts.o
  .bss           0x00000000        0x0 Node_1/fonts.o
@@ -898,93 +900,93 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x238
+.debug_aranges  0x00000000      0x240
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 Node_1/adc.o
  .debug_aranges
-                0x00000040       0x40 Node_1/can.o
+                0x00000040       0x48 Node_1/can.o
  .debug_aranges
-                0x00000080       0x20 Node_1/main.o
+                0x00000088       0x20 Node_1/main.o
  .debug_aranges
-                0x000000a0       0x68 Node_1/mcp_driver.o
+                0x000000a8       0x68 Node_1/mcp_driver.o
  .debug_aranges
-                0x00000108       0x80 Node_1/oled.o
+                0x00000110       0x80 Node_1/oled.o
  .debug_aranges
-                0x00000188       0x30 Node_1/spi_driver.o
+                0x00000190       0x30 Node_1/spi_driver.o
  .debug_aranges
-                0x000001b8       0x30 Node_1/sram.o
+                0x000001c0       0x30 Node_1/sram.o
  .debug_aranges
-                0x000001e8       0x50 Node_1/uart.o
+                0x000001f0       0x50 Node_1/uart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x24d3
+.debug_info     0x00000000     0x254f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5d0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_info    0x000005d0      0x3b4 Node_1/adc.o
- .debug_info    0x00000984      0x4d3 Node_1/can.o
- .debug_info    0x00000e57      0x290 Node_1/main.o
- .debug_info    0x000010e7      0x5ce Node_1/mcp_driver.o
- .debug_info    0x000016b5      0x945 Node_1/oled.o
- .debug_info    0x00001ffa       0xec Node_1/spi_driver.o
- .debug_info    0x000020e6      0x21e Node_1/sram.o
- .debug_info    0x00002304      0x1cf Node_1/uart.o
+ .debug_info    0x000005d0      0x3c2 Node_1/adc.o
+ .debug_info    0x00000992      0x541 Node_1/can.o
+ .debug_info    0x00000ed3      0x290 Node_1/main.o
+ .debug_info    0x00001163      0x5ce Node_1/mcp_driver.o
+ .debug_info    0x00001731      0x945 Node_1/oled.o
+ .debug_info    0x00002076       0xec Node_1/spi_driver.o
+ .debug_info    0x00002162      0x21e Node_1/sram.o
+ .debug_info    0x00002380      0x1cf Node_1/uart.o
 
-.debug_abbrev   0x00000000     0x118e
+.debug_abbrev   0x00000000     0x11d7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x580 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega162/avr5/crtatmega162.o
  .debug_abbrev  0x00000580      0x1f5 Node_1/adc.o
- .debug_abbrev  0x00000775      0x1c6 Node_1/can.o
- .debug_abbrev  0x0000093b      0x118 Node_1/main.o
- .debug_abbrev  0x00000a53      0x1fb Node_1/mcp_driver.o
- .debug_abbrev  0x00000c4e      0x25d Node_1/oled.o
- .debug_abbrev  0x00000eab       0xba Node_1/spi_driver.o
- .debug_abbrev  0x00000f65      0x123 Node_1/sram.o
- .debug_abbrev  0x00001088      0x106 Node_1/uart.o
+ .debug_abbrev  0x00000775      0x20f Node_1/can.o
+ .debug_abbrev  0x00000984      0x118 Node_1/main.o
+ .debug_abbrev  0x00000a9c      0x1fb Node_1/mcp_driver.o
+ .debug_abbrev  0x00000c97      0x25d Node_1/oled.o
+ .debug_abbrev  0x00000ef4       0xba Node_1/spi_driver.o
+ .debug_abbrev  0x00000fae      0x123 Node_1/sram.o
+ .debug_abbrev  0x000010d1      0x106 Node_1/uart.o
 
-.debug_line     0x00000000     0x135c
+.debug_line     0x00000000     0x1373
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x140 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega162/avr5/crtatmega162.o
  .debug_line    0x00000140      0x294 Node_1/adc.o
- .debug_line    0x000003d4      0x227 Node_1/can.o
- .debug_line    0x000005fb      0x177 Node_1/main.o
- .debug_line    0x00000772      0x31a Node_1/mcp_driver.o
- .debug_line    0x00000a8c      0x480 Node_1/oled.o
- .debug_line    0x00000f0c       0xfa Node_1/spi_driver.o
- .debug_line    0x00001006      0x1e7 Node_1/sram.o
- .debug_line    0x000011ed      0x16f Node_1/uart.o
+ .debug_line    0x000003d4      0x23e Node_1/can.o
+ .debug_line    0x00000612      0x177 Node_1/main.o
+ .debug_line    0x00000789      0x31a Node_1/mcp_driver.o
+ .debug_line    0x00000aa3      0x480 Node_1/oled.o
+ .debug_line    0x00000f23       0xfa Node_1/spi_driver.o
+ .debug_line    0x0000101d      0x1e7 Node_1/sram.o
+ .debug_line    0x00001204      0x16f Node_1/uart.o
 
-.debug_frame    0x00000000      0x5bc
+.debug_frame    0x00000000      0x5cc
  *(.debug_frame)
  .debug_frame   0x00000000       0x98 Node_1/adc.o
- .debug_frame   0x00000098       0xc4 Node_1/can.o
- .debug_frame   0x0000015c       0x34 Node_1/main.o
- .debug_frame   0x00000190       0xe8 Node_1/mcp_driver.o
- .debug_frame   0x00000278      0x174 Node_1/oled.o
- .debug_frame   0x000003ec       0x44 Node_1/spi_driver.o
- .debug_frame   0x00000430      0x108 Node_1/sram.o
- .debug_frame   0x00000538       0x84 Node_1/uart.o
+ .debug_frame   0x00000098       0xd4 Node_1/can.o
+ .debug_frame   0x0000016c       0x34 Node_1/main.o
+ .debug_frame   0x000001a0       0xe8 Node_1/mcp_driver.o
+ .debug_frame   0x00000288      0x174 Node_1/oled.o
+ .debug_frame   0x000003fc       0x44 Node_1/spi_driver.o
+ .debug_frame   0x00000440      0x108 Node_1/sram.o
+ .debug_frame   0x00000548       0x84 Node_1/uart.o
 
-.debug_str      0x00000000      0x849
+.debug_str      0x00000000      0x88f
  *(.debug_str)
  .debug_str     0x00000000      0x1f6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_str     0x000001f6      0x284 Node_1/adc.o
-                                0x2d6 (size before relaxing)
- .debug_str     0x0000047a       0xd2 Node_1/can.o
+ .debug_str     0x000001f6      0x2a0 Node_1/adc.o
+                                0x2f2 (size before relaxing)
+ .debug_str     0x00000496       0xfc Node_1/can.o
+                                0x2cd (size before relaxing)
+ .debug_str     0x00000592       0x77 Node_1/main.o
                                 0x280 (size before relaxing)
- .debug_str     0x0000054c       0x77 Node_1/main.o
-                                0x280 (size before relaxing)
- .debug_str     0x000005c3       0x7a Node_1/mcp_driver.o
+ .debug_str     0x00000609       0x7a Node_1/mcp_driver.o
                                 0x2b7 (size before relaxing)
- .debug_str     0x0000063d       0xd9 Node_1/oled.o
+ .debug_str     0x00000683       0xd9 Node_1/oled.o
                                 0x31a (size before relaxing)
- .debug_str     0x00000716       0x17 Node_1/spi_driver.o
+ .debug_str     0x0000075c       0x17 Node_1/spi_driver.o
                                 0x1b8 (size before relaxing)
- .debug_str     0x0000072d       0xb3 Node_1/sram.o
+ .debug_str     0x00000773       0xb3 Node_1/sram.o
                                 0x24d (size before relaxing)
- .debug_str     0x000007e0       0x69 Node_1/uart.o
+ .debug_str     0x00000826       0x69 Node_1/uart.o
                                 0x21d (size before relaxing)
 
 .debug_loc      0x00000000     0x1218
@@ -1015,16 +1017,16 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x200
+.debug_ranges   0x00000000      0x208
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 Node_1/adc.o
- .debug_ranges  0x00000030       0x30 Node_1/can.o
- .debug_ranges  0x00000060       0x10 Node_1/main.o
- .debug_ranges  0x00000070       0x58 Node_1/mcp_driver.o
- .debug_ranges  0x000000c8       0x88 Node_1/oled.o
- .debug_ranges  0x00000150       0x20 Node_1/spi_driver.o
- .debug_ranges  0x00000170       0x50 Node_1/sram.o
- .debug_ranges  0x000001c0       0x40 Node_1/uart.o
+ .debug_ranges  0x00000030       0x38 Node_1/can.o
+ .debug_ranges  0x00000068       0x10 Node_1/main.o
+ .debug_ranges  0x00000078       0x58 Node_1/mcp_driver.o
+ .debug_ranges  0x000000d0       0x88 Node_1/oled.o
+ .debug_ranges  0x00000158       0x20 Node_1/spi_driver.o
+ .debug_ranges  0x00000178       0x50 Node_1/sram.o
+ .debug_ranges  0x000001c8       0x40 Node_1/uart.o
 
 .debug_macro
  *(.debug_macro)

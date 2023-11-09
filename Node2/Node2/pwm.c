@@ -50,6 +50,7 @@ void set_duty_cycle(float val, int chan){
 float calculate_dc(uint8_t* js_pos,int dir){
 	    // dir = 0 means left/right
 		int K = js_pos[dir];
+		K = 255-K;
 		float r = (0.05/255)*K + 0.05;
 		
 		return r;

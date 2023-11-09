@@ -42,7 +42,6 @@ void CAN0_Handler( void )
 		if(can_sr & CAN_SR_MB1)  //Mailbox 1 event
 		{
 			can_receive(&message, 1);
-
 		}
 		else if(can_sr & CAN_SR_MB2) //Mailbox 2 event
 		
@@ -55,21 +54,21 @@ void CAN0_Handler( void )
 		}
 
 		
-	
-		
-		//printf("[ ");
+
+	if (message.id == 1)
+	{
 		for (int i = 0 ; i< message.data_length; i++)
 		{
 			
-			//printf("%d ,", message.data[i]);
 			js_pos_2[i] = message.data[i];
 		}
-	//	printf("] \n\r");
-		
-		
-		
-		
-		
+	}
+// 	else if ((message.id != 1) | (message.data_length == 1)) {
+// 
+// 		button_push();
+// 	}
+
+
 		if(DEBUG_INTERRUPT)printf("message id: %d\n\r", message.id);
 		if(DEBUG_INTERRUPT)printf("message data length: %d\n\r", message.data_length);
 		for (int i = 0; i < message.data_length; i++)
@@ -78,7 +77,7 @@ void CAN0_Handler( void )
 		}
 		if(DEBUG_INTERRUPT)printf("\n\r");
 	}
-	
+
 	if(can_sr & CAN_SR_MB0)
 	{
 		if(DEBUG_INTERRUPT) printf("CAN0 MB0 ready to send \n\r");
@@ -100,7 +99,6 @@ void CAN0_Handler( void )
 	}
 	
 	NVIC_ClearPendingIRQ(ID_CAN0);
-	//sei();*/
 }
 
 void get_js_pos(uint8_t* adress){
@@ -108,5 +106,10 @@ void get_js_pos(uint8_t* adress){
 	{
 		adress[i] = js_pos_2[i]; 
 	}
-	 
 }
+
+// void button_push(){
+	//printf("Hei");
+//	set_pin_low();
+	//printf("Hei");
+//}
