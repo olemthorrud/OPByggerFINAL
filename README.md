@@ -1,1 +1,1 @@
-Solution to lab assignment in the NTNU subject "TTK4155 - Industrielle og innbygde datasystemers konstruksjon", commonly known as "Bygger'n". Authored by Per Martin Herdlevær and Ole Mandius Harm Thorrud.
+Solution to lab assignment in the subject "TTK4155 - Industrielle og innbygde datasystemers konstruksjon" at NTNU, commonly known as "Bygger'n". Authored by Per Martin Herdlevær and Ole Mandius Harm Thorrud.
