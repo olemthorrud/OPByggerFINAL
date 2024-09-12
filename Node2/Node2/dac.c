@@ -14,10 +14,9 @@ void dac_init(){
 	PMC->PMC_PCR |= (1<< 28) |(0 << 16) |  (0 << 17) | (periph_id);
 	PMC->PMC_PCER1 |= 1 << (periph_id-32);
 	
-	DACC->DACC_MR = DACC_MR_USER_SEL_CHANNEL1 | (1 << 27); //Startuptime på 512 clock cycles
+	DACC->DACC_MR = DACC_MR_USER_SEL_CHANNEL1 | (1 << 27); //Startuptime pÃ¥ 512 clock cycles
 	DACC->DACC_CHER = 2;
 }
-
 
 void dac_transmit(uint8_t data){
 	//DACC->DACC_CDR = data; 
