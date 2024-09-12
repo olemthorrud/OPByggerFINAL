@@ -17,7 +17,7 @@ void adc_init(){
 	PMC->PMC_PCR |= (1<< 28) |(0 << 16) |  (0 << 17) | (p_id);
 	PMC->PMC_PCER1 |= 1 << (p_id-32);
 	
-	ADC->ADC_CHER = (1 << 2); // Using channel 2. This corresponds to PA4 which is A5 on th shield
+	ADC->ADC_CHER = (1 << 2); // Using channel 2. This corresponds to PA4 which is A5 on the shield
 	
 	ADC->ADC_CR = (1 << 1);
 }
