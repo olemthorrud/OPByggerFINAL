@@ -11,8 +11,6 @@
 
 #define p_id 37
 
-
-
 void adc_init();
 
 uint16_t adc_drive(uint16_t* val);
