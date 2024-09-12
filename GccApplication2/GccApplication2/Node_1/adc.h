@@ -13,7 +13,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdio.h>
-#include <avr/interrupt.h> //OLES KODE
+#include <avr/interrupt.h> 
 #include "can.h"
 
 
