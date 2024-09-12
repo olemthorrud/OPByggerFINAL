@@ -52,8 +52,6 @@ int can_recieve(can_message* message) {
 
 
 void can_test(unsigned short id, unsigned char length, char data[]){
- 	
-		
 	can_message to_send;
 	to_send.id = id;
 	to_send.length = length;
@@ -74,28 +72,8 @@ void can_test(unsigned short id, unsigned char length, char data[]){
 
 void send_js_pos(uint8_t* js_pos){
 	adc_driver(js_pos);
-// 	printf("%d" , *button);
-// 	if (*button = 1)
-// 	{
-// 		js_pos[2] = 1;
-// 		
-// 		*button = 0; 
-// 	}
-// 	
-	can_message to_send;
-	to_send.id = 1;
-	to_send.length = 4;
-	//char* js_pos_as_chars;
-//	printf("[ ");
-// 	for (int i = 0; i < 4; i++)
-// 	{
-// 		printf("%d , ",js_pos[i]); 
-// 	}
-// 	printf("]");
-// 	printf("\r\n");
 	memcpy(to_send.data, js_pos, 4);
 	can_send(&to_send);
-//	js_pos[2] = 0;
 }
 
 
@@ -110,14 +88,3 @@ can_message* generate_button_IR_can_msg(){
 	
 	return &button_IR_message; 
 }
-
-/*  Funksjon for å sende at vi trykker knapp
-void send_button_push(){
-	can_message to_send;
-	to_send.id = 2;
-	to_send.length = 1;
-	uint8_t b = 1;
-	memcpy(to_send.data, b, 1);
-	can_send(&to_send);
-}
-*/
